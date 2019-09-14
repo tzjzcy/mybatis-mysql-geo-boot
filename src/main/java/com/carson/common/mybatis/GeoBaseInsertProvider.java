@@ -53,7 +53,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             } else {
                 if (column.getJavaType() == GeoPoint.class) {
                     //<if test="property != null">geomfromtext('point(108.9498710632 34.2588125935)'),</if>
-                    sql.append(String.format("<if test=\"%s != null\">geomfromtext('point(${%s.lng} ${%s.lat})'),</if>", column.getProperty(), column.getProperty(), column.getProperty()));
+                    sql.append(SqlHelper.getIfNotNull(column, getGeoColumnHolder(column), isNotEmpty()));
                 } else {
                     //其他情况值仍然存在原property中
                     sql.append(SqlHelper.getIfNotNull(column, column.getColumnHolder(null, null, ","), isNotEmpty()));
@@ -66,7 +66,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             } else {
                 if (column.getJavaType() == GeoPoint.class) {
                     //<if test="property == null">geomfromtext('point(108.9498710632 34.2588125935)'),</if>
-                    sql.append(String.format("<if test=\"%s == null\">geomfromtext('point(${%s.lng} ${%s.lat})'),</if>", column.getProperty(), column.getProperty(), column.getProperty()));
+                    sql.append(SqlHelper.getIfIsNull(column, getGeoColumnHolder(column), isNotEmpty()));
                 } else {
                     //当null的时候，如果不指定jdbcType，oracle可能会报异常，指定VARCHAR不影响其他
                     sql.append(SqlHelper.getIfIsNull(column, column.getColumnHolder(null, null, ","), isNotEmpty()));
@@ -124,7 +124,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             } else {
                 if (column.getJavaType() == GeoPoint.class) {
                     //<if test="property != null">geomfromtext('point(108.9498710632 34.2588125935)'),</if>
-                    sql.append(String.format("<if test=\"%s != null\">geomfromtext('point(${%s.lng} ${%s.lat})'),</if>", column.getProperty(), column.getProperty(), column.getProperty()));
+                    sql.append(SqlHelper.getIfNotNull(column, getGeoColumnHolder(column), isNotEmpty()));
                 }
                 else {
                     //其他情况值仍然存在原property中
@@ -172,6 +172,13 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             }
 
         }
+    }
+
+    /*
+     * insert GEO字段占位符
+     */
+    private String getGeoColumnHolder(EntityColumn column){
+        return String.format("geomfromtext('point(${%s.lng} ${%s.lat})'),",column.getProperty(),column.getProperty());
     }
 
 }
