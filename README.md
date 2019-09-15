@@ -22,17 +22,17 @@ mybatis-mysql-geo-boot是基于 mybatis 和 tk通用mapper 扩展出对 mysql数
 
 ### 实体类demo
 ```java
-    @Table(name = "t_user")
-    public class User {
-        private String id;
-        private String name;
-        @Column
-        private GeoPoint gis;
-        @VirtualGenerated
-        private String geohash;
-        
-        //getter、setter省略
-    }
+@Table(name = "t_user")
+public class User {
+    private String id;
+    private String name;
+    @Column
+    private GeoPoint gis;
+    @VirtualGenerated
+    private String geohash;
+    
+    //getter、setter省略
+}
 ```
 
 ### mybatis配置
@@ -67,9 +67,9 @@ public class MybatisConfig {
 
 ### mapper接口
 ```java
-    @Repository
-    public interface UserMapper extends GeoBaseInsertMapper<User>, GeoBaseUpdateMapper<User>, BaseSelectMapper<User> {
-    }
+@Repository
+public interface UserMapper extends GeoBaseInsertMapper<User>, GeoBaseUpdateMapper<User>, BaseSelectMapper<User> {
+}
 ```
 
 ## Prerequisites
