@@ -10,6 +10,8 @@ mybatis-mysql-geo-boot是基于 mybatis 和 tk通用mapper 扩展出对 mysql数
 
 ## 案例演示
 下载代码，运行carson-web-mvc-bootdemo，即可看到使用案例
+- 调用/userList接口演示select案例
+- 调用/addUser接口演示insert案例
 
 ## 版本更新
 - 2019-09-15 项目发布第一版
