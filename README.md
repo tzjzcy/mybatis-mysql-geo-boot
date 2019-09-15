@@ -68,7 +68,9 @@ public class MybatisConfig {
 ### mapper接口
 ```java
 @Repository
-public interface UserMapper extends GeoBaseInsertMapper<User>, GeoBaseUpdateMapper<User>, BaseSelectMapper<User> {
+public interface UserMapper extends GeoBaseInsertMapper<User>, 
+                                    GeoBaseUpdateMapper<User>, 
+                                    BaseSelectMapper<User> {
 }
 ```
 
