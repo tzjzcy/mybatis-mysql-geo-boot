@@ -80,7 +80,11 @@ public interface UserMapper extends GeoBaseInsertMapper<User>,
 [JDK 8 update 20 or later][JDK8 build]
 
 ## Check out sources
+github:
 `git clone https://github.com/tzjzcy/mybatis-mysql-geo-boot.git`
+
+gitee:
+`git clone https://gitee.com/tzjzcy/mybatis-mysql-geo-boot.git`
 
 ## License
 The mybatis-mysql-geo-boot is released under [MIT License][].
