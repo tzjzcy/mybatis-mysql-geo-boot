@@ -23,10 +23,17 @@ import java.sql.SQLException;
 @MappedTypes(value = {GeoPoint.class})
 public class MysqlGeoPointTypeHandler extends BaseTypeHandler<GeoPoint> {
 
+    private int _srid = 0;
     private WKBReader _wkbReader;
 
+    public MysqlGeoPointTypeHandler() {
+        GeometryFactory _geometryFactory = new GeometryFactory(new PrecisionModel(), _srid);
+        _wkbReader = new WKBReader(_geometryFactory);
+    }
+
     public MysqlGeoPointTypeHandler(int srid) {
-        GeometryFactory _geometryFactory = new GeometryFactory(new PrecisionModel(), srid);
+        this._srid=srid;
+        GeometryFactory _geometryFactory = new GeometryFactory(new PrecisionModel(), _srid);
         _wkbReader = new WKBReader(_geometryFactory);
     }
 

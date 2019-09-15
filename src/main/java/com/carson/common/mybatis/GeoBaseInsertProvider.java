@@ -27,6 +27,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             if (!column.isInsertable()) {
                 continue;
             }
+            //忽略虚拟列
             if (column.getEntityField().isAnnotationPresent(VirtualGenerated.class)) {
                 continue;
             }
@@ -38,6 +39,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             if (!column.isInsertable()) {
                 continue;
             }
+            //忽略虚拟列
             if (column.getEntityField().isAnnotationPresent(VirtualGenerated.class)) {
                 continue;
             }
@@ -90,6 +92,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             if (!column.isInsertable()) {
                 continue;
             }
+            //忽略虚拟列
             if (column.getEntityField().isAnnotationPresent(VirtualGenerated.class)) {
                 continue;
             }
@@ -110,6 +113,7 @@ public class GeoBaseInsertProvider extends MapperTemplate {
             if (!column.isInsertable()) {
                 continue;
             }
+            //忽略虚拟列
             if (column.getEntityField().isAnnotationPresent(VirtualGenerated.class)) {
                 continue;
             }

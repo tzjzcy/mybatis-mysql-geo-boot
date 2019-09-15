@@ -30,7 +30,7 @@ public class MybatisConfig {
         try {
             bean.setMapperLocations(resolver.getResources("classpath:mybatis/**/*Mapper.xml"));
             bean.setTypeAliasesPackage("com.carson.pojo");
-            bean.setTypeHandlers(new TypeHandler[]{new MysqlGeoPointTypeHandler(0)});
+            bean.setTypeHandlers(new TypeHandler[]{new MysqlGeoPointTypeHandler()});
             bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
             return bean.getObject();
         } catch (Exception e) {
